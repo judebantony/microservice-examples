@@ -9,7 +9,7 @@
 	<groupId>com.jba.examples.registry</groupId>
 	<artifactId>microservice-service-registry</artifactId>
 	<name>Service Registry</name>
-	<description>Travel Go Registry</description>
+	<description>Service Registry</description>
 	<packaging>jar</packaging>
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
