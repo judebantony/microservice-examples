@@ -6,22 +6,33 @@
 		<artifactId>microservice-example-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<groupId>com.jba.examples.registry</groupId>
-	<artifactId>microservice-service-registry</artifactId>
-	<name>Service Registry</name>
-	<description>Eureka Server Service Registry</description>
+	<groupId>com.jba.examples.dashboard</groupId>
+	<artifactId>microservice-service-dashboard</artifactId>
+	<name>Dashboard Example</name>
+	<description>Turbine Dashboard Example</description>
 	<packaging>jar</packaging>
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-		<start-class>com.jba.registry.starter.RegistrationServerApplication</start-class>
+		<start-class>com.jba.dashboard.starter.TurbineDashboardApplication</start-class>
 	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-eureka-server</artifactId>
+			<artifactId>spring-cloud-starter-turbine-stream</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-stream-rabbit</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -40,7 +51,7 @@
 		</dependencies>
 	</dependencyManagement>
 	<build>
-		<finalName>microservice-service-registry</finalName>
+		<finalName>microservice-service-dashboard</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -53,8 +64,8 @@
 					</execution>
 				</executions>
 				<configuration>
-					<mainClass>com.jba.registry.starter.RegistrationServerApplication</mainClass>
-					<finalName>microservice-service-registry</finalName>
+					<mainClass>com.jba.dashboard.starter.TurbineDashboardApplication</mainClass>
+					<finalName>microservice-service-dashboard</finalName>
 				</configuration>
 			</plugin>
 			<plugin>
