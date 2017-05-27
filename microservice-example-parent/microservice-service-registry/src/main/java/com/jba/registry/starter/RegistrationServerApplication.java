@@ -20,7 +20,7 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 public class RegistrationServerApplication {
 	private static final Logger LOGGER = LoggerFactory.getLogger(RegistrationServerApplication.class);	
 	public static void main(String[] args) throws Exception {
-		LOGGER.info("TravelGo Registration Server is Starting");
+		LOGGER.info("Registration Server is Starting");
 		SpringApplication.run(RegistrationServerApplication.class, args);
 	}
 }
