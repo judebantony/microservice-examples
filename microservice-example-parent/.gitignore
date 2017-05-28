@@ -15,5 +15,6 @@ local.properties
 .settings/
 .loadpath
 [Rr]emoteSystemsTempFiles*/
+RemoteSystemsTempFiles*/
 externalToolBuilders/
 .recommenders/

@@ -1,2 +1,24 @@
 /.metadata/
 /.recommenders/
+
+
+# eclipse specific git ignore
+*.pydevproject
+.project
+.metadata
+target/**
+bin/**
+tmp/**
+tmp/**/*
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.classpath
+.settings/
+.loadpath
+[Rr]emoteSystemsTempFiles*/
+RemoteSystemsTempFiles*/
+externalToolBuilders/
+.recommenders/
