@@ -14,8 +14,4 @@ local.properties
 .classpath
 .settings/
 .loadpath
-[Rr]emoteSystemsTempFiles*/
-RemoteSystemsTempFiles*/
-externalToolBuilders/
-.recommenders/
 .springBeans

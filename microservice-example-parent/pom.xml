@@ -17,6 +17,7 @@
 		<module>microservice-service-registry</module>
 		<module>microservice-service-dashboard</module>
 		<module>microservice-config-server</module>
+		<module>mircoservice-neo4j-repo</module>
 	</modules>
 	<properties>
 		<spring.boot.version>1.5.2.RELEASE</spring.boot.version>
