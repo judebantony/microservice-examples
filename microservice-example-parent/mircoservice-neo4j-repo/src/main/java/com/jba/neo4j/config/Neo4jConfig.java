@@ -3,8 +3,6 @@
  */
 package com.jba.neo4j.config;
 
-import java.io.File;
-
 import org.neo4j.graphdb.GraphDatabaseService;
 import org.neo4j.graphdb.factory.GraphDatabaseFactory;
 import org.springframework.beans.BeansException;

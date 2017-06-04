@@ -30,11 +30,11 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableHystrix
 public class Neo4JStarter {
 	private static final Logger LOGGER = LoggerFactory.getLogger(Neo4JStarter.class);
+
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		
 		LOGGER.info("User Neo4j Repo Server is Starting");
 		SpringApplication.run(Neo4JStarter.class, args);
 	}

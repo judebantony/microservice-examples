@@ -27,6 +27,7 @@ import io.swagger.annotations.ApiResponses;
  * @author Jude
  * @since June 3, 2017
  */
+
 @RestController
 @RequestMapping(value = "/api/v1")
 @Api(value = "users")
