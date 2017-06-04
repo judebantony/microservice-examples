@@ -6,15 +6,15 @@
 		<artifactId>microservice-example-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<groupId>com.jba.examples.registry</groupId>
-	<artifactId>microservice-service-registry</artifactId>
-	<name>Service Registry</name>
-	<description>Eureka Server Service Registry</description>
-	<packaging>jar</packaging>
+	<groupId>com.jba.examples.gateway</groupId>
+	<artifactId>mircoservice-gateway</artifactId>
+	<name>Api Gateway</name>
+	<description>Api Gateway example</description>
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-		<start-class>com.jba.registry.starter.RegistrationServerApplication</start-class>
+		<failOnMissingWebXml>false</failOnMissingWebXml>
+		<start-class>com.jba.starter.ApiGatewayApplication</start-class>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -35,7 +35,35 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-eureka-server</artifactId>
+			<artifactId>spring-cloud-config-client</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-zuul</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-eureka</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-hystrix-dashboard</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-hystrix</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-netflix-hystrix-stream</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-stream-rabbit</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-bus-amqp</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -54,8 +82,9 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+
 	<build>
-		<finalName>microservice-service-registry</finalName>
+		<finalName>mircoservice-gateway</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -68,8 +97,8 @@
 					</execution>
 				</executions>
 				<configuration>
-					<mainClass>com.jba.registry.starter.RegistrationServerApplication</mainClass>
-					<finalName>microservice-service-registry</finalName>
+					<mainClass>com.jba.starter.ApiGatewayApplication</mainClass>
+					<finalName>mircoservice-gateway</finalName>
 				</configuration>
 			</plugin>
 			<plugin>

@@ -18,6 +18,7 @@
 		<module>microservice-service-dashboard</module>
 		<module>microservice-config-server</module>
 		<module>mircoservice-neo4j-repo</module>
+		<module>mircoservice-gateway</module>
 	</modules>
 	<properties>
 		<spring.boot.version>1.5.2.RELEASE</spring.boot.version>
@@ -32,6 +33,7 @@
 		<node.version>v4.6.0</node.version>
 		<npm.version>2.15.9</npm.version>
 		<spring.data.neo4j.version>2.3.3.RELEASE</spring.data.neo4j.version>
+		<docker.image.prefix>jba</docker.image.prefix>
 	</properties>
 	<repositories>
 		<repository>

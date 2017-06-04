@@ -15,7 +15,6 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<start-class>com.jba.config.starter.ConfigServerApplication</start-class>
-		<docker.image.prefix>jba</docker.image.prefix>
 	</properties>
 
 	<dependencies>
