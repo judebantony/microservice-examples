@@ -6,20 +6,29 @@
 		<artifactId>microservice-example-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<groupId>com.jba.examples.gateway</groupId>
-	<artifactId>mircoservice-gateway</artifactId>
-	<name>Api Gateway</name>
-	<description>Api Gateway example</description>
+	<groupId>com.jba.examples.authserver</groupId>
+	<artifactId>mircoservice-oauth2-authserver</artifactId>
+	<name>Oauth2 AuthServer</name>
+	<description>Oauth2 AuthServer example</description>
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<failOnMissingWebXml>false</failOnMissingWebXml>
-		<start-class>com.jba.gateway.starter.ApiGatewayApplication</start-class>
+		<start-class>com.jba.authserver.starter.AuthServerApplication</start-class>
 	</properties>
 	<dependencies>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-actuator</artifactId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security.oauth</groupId>
+			<artifactId>spring-security-oauth2</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-jwt</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -27,11 +36,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-tomcat</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter</artifactId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
@@ -84,7 +89,7 @@
 	</dependencyManagement>
 
 	<build>
-		<finalName>mircoservice-gateway</finalName>
+		<finalName>mircoservice-oauth2-authserver</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -97,8 +102,8 @@
 					</execution>
 				</executions>
 				<configuration>
-					<mainClass>com.jba.gateway.starterApiGatewayApplication</mainClass>
-					<finalName>mircoservice-gateway</finalName>
+					<mainClass>com.jba.authserver.starter.AuthServerApplication</mainClass>
+					<finalName>mircoservice-oauth2-authserver</finalName>
 				</configuration>
 			</plugin>
 			<plugin>

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.jba.gateway.starter;
+package com.jba.authserver.starter;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,19 +14,19 @@ import org.springframework.context.annotation.ComponentScan;
 
 /**
  * @author Jude
- * @since June 04, 2017
+ * @since June 16, 2017
  */
 @SpringBootApplication
 @EnableZuulProxy
 @EnableEurekaClient
 @ComponentScan("com.jba")
 @EnableHystrix
-public class ApiGatewayApplication {
-	private static final Logger LOGGER = LoggerFactory.getLogger(ApiGatewayApplication.class);
+public class AuthServerApplication {
+	private static final Logger LOGGER = LoggerFactory.getLogger(AuthServerApplication.class);
 
 	public static void main(String[] args) {
-		LOGGER.info("Api Gateway Server is Starting");
-		SpringApplication.run(ApiGatewayApplication.class, args);
+		LOGGER.info("Auth Server Server is Starting");
+		SpringApplication.run(AuthServerApplication.class, args);
 	}
 
 }
