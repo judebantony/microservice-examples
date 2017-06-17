@@ -3,9 +3,13 @@
  */
 package com.jba.authserver.config;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.actuate.autoconfigure.ManagementServerProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
@@ -19,16 +23,21 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFactory;
 
 import com.jba.authserver.constant.AuthServerConstants;
+import com.jba.authserver.provider.CustomUserDetailsService;
 
 /**
  * @author Jude
  *
  */
 @Configuration
+@Order(ManagementServerProperties.ACCESS_OVERRIDE_ORDER)
 @EnableAuthorizationServer
 public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
+	private static final Logger LOGGER = LoggerFactory.getLogger(OAuth2Config.class);
 	@Autowired
 	private AuthenticationManager authenticationManager;
+	@Autowired
+	private CustomUserDetailsService customUserDetailsService;
 
 	@Bean
 	protected JwtAccessTokenConverter jwtTokenEnhancer() {
@@ -49,8 +58,9 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
 
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+		LOGGER.info("authenticationManager calss name {} ", authenticationManager.getClass());
 		endpoints.tokenStore(tokenStore()).tokenEnhancer(jwtTokenEnhancer())
-				.authenticationManager(authenticationManager);
+				.authenticationManager(authenticationManager).userDetailsService(customUserDetailsService);
 	}
 
 	@Bean

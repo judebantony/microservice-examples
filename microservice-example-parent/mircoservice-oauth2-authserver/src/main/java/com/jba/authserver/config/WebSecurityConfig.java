@@ -3,6 +3,8 @@
  */
 package com.jba.authserver.config;
 
+import java.util.Arrays;
+
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,12 +13,15 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 import com.jba.authserver.constant.AuthServerConstants;
+import com.jba.authserver.provider.CustomAuthenticationProvider;
 
 /**
  * @author Jude
@@ -26,11 +31,15 @@ import com.jba.authserver.constant.AuthServerConstants;
 @Order(ManagementServerProperties.ACCESS_OVERRIDE_ORDER)
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+	
+	@Autowired
+	private CustomAuthenticationProvider customAuthenticationProvider;
 
 	@Override
 	@Bean
 	public AuthenticationManager authenticationManagerBean() throws Exception {
-		return super.authenticationManagerBean();
+		return new ProviderManager(Arrays.asList((AuthenticationProvider) new CustomAuthenticationProvider()));
+		
 	}
 
 	@Override
@@ -43,11 +52,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication().withUser(AuthServerConstants.READER).password(AuthServerConstants.READER)
+		auth.authenticationProvider(customAuthenticationProvider);
+/*		auth.inMemoryAuthentication().withUser(AuthServerConstants.READER).password(AuthServerConstants.READER)
 				.authorities(AuthServerConstants.FULL_READ).and().withUser(AuthServerConstants.WRITER)
 				.password(AuthServerConstants.WRITER)
 				.authorities(AuthServerConstants.FULL_READ, AuthServerConstants.FULL_WRITE);
-	}
+*/	}
 
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
