@@ -17,11 +17,12 @@
 		<module>microservice-service-registry</module>
 		<module>microservice-service-dashboard</module>
 		<module>microservice-config-server</module>
-		<module>mircoservice-neo4j-repo</module>
-		<module>mircoservice-gateway</module>
-		<module>mircoservice-oauth2-authserver</module>
+		<module>microservice-neo4j-repo</module>
+		<module>microservice-gateway</module>
+		<module>microservice-oauth2-authserver</module>
 		<module>microservice-feign-client</module>
 		<module>microservice-websocket</module>
+		<module>microservice-zipkin-stream-server</module>
 	</modules>
 	<properties>
 		<spring.boot.version>1.5.2.RELEASE</spring.boot.version>
