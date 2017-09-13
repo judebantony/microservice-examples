@@ -21,6 +21,7 @@
 		<module>mircoservice-gateway</module>
 		<module>mircoservice-oauth2-authserver</module>
 		<module>microservice-feign-client</module>
+		<module>microservice-websocket</module>
 	</modules>
 	<properties>
 		<spring.boot.version>1.5.2.RELEASE</spring.boot.version>
@@ -74,6 +75,14 @@
 			<id>neo4j-spring-release</id>
 			<name>Neo4j Spring release</name>
 			<url>http://m2.neo4j.org/content/repositories/releases</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>awaitility-release</id>
+			<name>Awaitility release</name>
+			<url>http://mvnrepository.com/artifact/org.awaitility/awaitility</url>
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>
