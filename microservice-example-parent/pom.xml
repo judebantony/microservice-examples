@@ -20,6 +20,7 @@
 		<module>mircoservice-neo4j-repo</module>
 		<module>mircoservice-gateway</module>
 		<module>mircoservice-oauth2-authserver</module>
+		<module>microservice-feign-client</module>
 	</modules>
 	<properties>
 		<spring.boot.version>1.5.2.RELEASE</spring.boot.version>
