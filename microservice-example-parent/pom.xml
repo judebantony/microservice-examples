@@ -23,6 +23,7 @@
 		<module>microservice-feign-client</module>
 		<module>microservice-websocket</module>
 		<module>microservice-zipkin-stream-server</module>
+		<module>microservice-camunda-bpm</module>
 	</modules>
 	<properties>
 		<spring.boot.version>1.5.2.RELEASE</spring.boot.version>
@@ -88,8 +89,11 @@
 				<enabled>false</enabled>
 			</snapshots>
 		</repository>
-
-
+		<repository>
+			<id>camunda.com.public</id>
+			<name>Camunda Repository</name>
+			<url>https://app.camunda.com/nexus/content/groups/public</url>
+		</repository>
 	</repositories>
 	<pluginRepositories>
 		<pluginRepository>
