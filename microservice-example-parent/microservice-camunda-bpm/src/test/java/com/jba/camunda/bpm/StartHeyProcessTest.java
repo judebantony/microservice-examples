@@ -23,10 +23,10 @@ import org.junit.Test;
 public class StartHeyProcessTest  extends AbstractProcessEngineRuleTest {
 
 	  @Test
-	  public void start_and_finish_process() {
+	  public void startAndFinishProcess() {
 	    autoMock("bpmn/judeTest.bpmn");
 
-	    final ProcessInstance processInstance = runtimeService().startProcessInstanceByKey("Sample");
+	    final ProcessInstance processInstance = runtimeService().startProcessInstanceByKey("judeTest");
 
 	    assertThat(processInstance).isWaitingAt("UserTask_1");
 

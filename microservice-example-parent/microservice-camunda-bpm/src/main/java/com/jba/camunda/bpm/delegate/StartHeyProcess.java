@@ -37,7 +37,6 @@ public class StartHeyProcess {
 	    taskService.complete(task.getId());
 	    logger.info("completed task: {}", task);
 
-	    // now jobExecutor should execute the async job
 	  }
 
 	  public String getProcessInstanceId() {

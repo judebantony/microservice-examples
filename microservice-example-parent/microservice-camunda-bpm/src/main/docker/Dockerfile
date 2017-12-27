@@ -5,4 +5,4 @@ RUN sh -c 'touch /microservice-camunda-bpm.jar'
 ENV JAVA_OPTS=""
 ENTRYPOINT [ "sh", "-c", "java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar /microservice-camunda-bpm.jar" ]
 
-EXPOSE 7070
+EXPOSE 2070

@@ -6,54 +6,37 @@
 		<artifactId>microservice-example-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<groupId>com.jba.examples.camunda.bpm</groupId>
-	<artifactId>microservice-camunda-bpm</artifactId>
+	<groupId>com.jba.examples.elasticsearch</groupId>
+	<artifactId>microservice-elasticsearch</artifactId>
 	<packaging>jar</packaging>
-	<name>Camunda  BPM Example</name>
-	<description>Camunda  BPM Example</description>
+
 	<properties>
+		<java.version>1.8</java.version>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<spring.boot.version>1.5.8.RELEASE</spring.boot.version>
-		<camunda.spring.boot.starter.version>2.3.0</camunda.spring.boot.starter.version>
-		<camunda.version>7.8.0</camunda.version>
-		<failOnMissingWebXml>false</failOnMissingWebXml>
-		<start-class>com.jba.camunda.bpm.starter.CamundaBPMStarter</start-class>
 	</properties>
+
 	<dependencies>
 		<dependency>
-			<groupId>org.camunda.bpm.springboot</groupId>
-			<artifactId>camunda-bpm-spring-boot-starter</artifactId>
-			<version>${camunda.spring.boot.starter.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.camunda.bpm</groupId>
-			<artifactId>camunda-engine</artifactId>
-			<version>${camunda.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang3</artifactId>
-			<version>3.0</version>
-		</dependency>
-		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<scope>runtime</scope>
+			<artifactId>spring-boot-starter-data-elasticsearch</artifactId>
 		</dependency>
 
 		<dependency>
-			<groupId>org.camunda.bpm.springboot</groupId>
-			<artifactId>camunda-bpm-spring-boot-starter-test</artifactId>
-			<version>${camunda.spring.boot.starter.version}</version>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<!-- Runtime, for Embedded Elasticsearch, comment this if connect to external 
+			elastic search server -->
+		<dependency>
+			<groupId>net.java.dev.jna</groupId>
+			<artifactId>jna</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>
@@ -68,9 +51,8 @@
 		</dependencies>
 	</dependencyManagement>
 
-
 	<build>
-		<finalName>microservice-camunda-bpm</finalName>
+		<finalName>microservice-elasticsearch</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -83,8 +65,8 @@
 					</execution>
 				</executions>
 				<configuration>
-					<mainClass>com.jba.camunda.bpm.starter.CamundaBPMStarter</mainClass>
-					<finalName>microservice-camunda-bpm</finalName>
+					<mainClass>com.jba.elasticsearch.starter.ElasticSearchStarter</mainClass>
+					<finalName>microservice-elasticsearch</finalName>
 				</configuration>
 			</plugin>
 			<plugin>

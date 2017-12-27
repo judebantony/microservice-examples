@@ -22,6 +22,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.event.EventListener;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -29,13 +30,13 @@ import org.springframework.util.Assert;
 
 import com.jba.camunda.bpm.delegate.StartHeyProcess;
 
-
 /**
  * @author Jude
  *
  */
 @SpringBootApplication
 @EnableScheduling
+@ComponentScan(basePackages = { "com.jba.camunda.bpm" })
 @EnableProcessApplication("camundaBPMStarter")
 public class CamundaBPMStarter implements CommandLineRunner {
 	public boolean processApplicationStopped;
