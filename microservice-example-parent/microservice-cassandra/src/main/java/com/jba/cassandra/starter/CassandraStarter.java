@@ -1,4 +1,4 @@
-package com.jba.es.starter;
+package com.jba.cassandra.starter;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,11 +17,9 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableDiscoveryClient
 @ComponentScan("com.jba")
 @EnableHystrix
-public class ElasticSearchStarter {
-
-
+public class CassandraStarter {
 	public static void main(String args[]) {
-		SpringApplication.run(ElasticSearchStarter.class, args);
+		SpringApplication.run(CassandraStarter.class, args);
 	}
 
 }

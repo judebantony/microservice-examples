@@ -14,13 +14,8 @@ import com.jba.es.repository.BookRepository;
 
 @Service
 public class BookServiceImpl implements BookService {
-
+	@Autowired
     private BookRepository bookRepository;
-
-    @Autowired
-    public void setBookRepository(BookRepository bookRepository) {
-        this.bookRepository = bookRepository;
-    }
 
     public Book save(Book book) {
         return bookRepository.save(book);

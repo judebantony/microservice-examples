@@ -1,4 +1,4 @@
-package com.jba;
+package com.jba.es;
 
 import java.net.InetAddress;
 
@@ -14,25 +14,23 @@ import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
 import org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories;
 
 @Configuration
-@EnableElasticsearchRepositories(basePackages = "com.jba.book.repository")
+@EnableElasticsearchRepositories(basePackages = "com.jba.es.repository")
 public class EsConfig {
 
 	@Value("${elasticsearch.host}")
-	private String EsHost;
+	private String esHost;
 
 	@Value("${elasticsearch.port}")
-	private int EsPort;
+	private int esPort;
 
 	@Value("${elasticsearch.clustername}")
-	private String EsClusterName;
+	private String esClusterName;
 
 	@Bean
 	public Client client() throws Exception {
-
-		Settings esSettings = Settings.settingsBuilder().put("cluster.name", EsClusterName).build();
-
+		Settings esSettings = Settings.settingsBuilder().put("cluster.name", esClusterName).build();
 		return TransportClient.builder().settings(esSettings).build()
-				.addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName(EsHost), EsPort));
+				.addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName(esHost), esPort));
 	}
 
 	@Bean

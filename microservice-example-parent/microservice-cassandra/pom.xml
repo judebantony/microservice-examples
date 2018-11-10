@@ -6,8 +6,8 @@
 		<artifactId>microservice-example-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<groupId>com.jba.examples.elasticsearch</groupId>
-	<artifactId>microservice-elasticsearch</artifactId>
+	<groupId>com.jba.examples.cassandra</groupId>
+	<artifactId>microservice-cassandra</artifactId>
 	<packaging>jar</packaging>
 
 	<properties>
@@ -20,7 +20,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-elasticsearch</artifactId>
+			<artifactId>spring-boot-starter-data-cassandra</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -69,6 +69,10 @@
 			<artifactId>spring-cloud-starter-stream-rabbit</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aspects</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-feign</artifactId>
 		</dependency>
@@ -98,14 +102,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
-		</dependency>
-
-		<!-- Runtime, for Embedded Elasticsearch, comment this if connect to external 
-			elastic search server -->
-		<dependency>
-			<groupId>net.java.dev.jna</groupId>
-			<artifactId>jna</artifactId>
-			<scope>runtime</scope>
 		</dependency>
 
 	</dependencies>
@@ -145,8 +141,8 @@
 					</execution>
 				</executions>
 				<configuration>
-					<mainClass>com.jba.es.starter.ElasticSearchStarter</mainClass>
-					<finalName>microservice-elasticsearch</finalName>
+					<mainClass>com.jba.cassandra.starter.CassandraStarter</mainClass>
+					<finalName>microservice-cassandra</finalName>
 				</configuration>
 			</plugin>
 			<plugin>
