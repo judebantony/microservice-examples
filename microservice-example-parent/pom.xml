@@ -26,6 +26,7 @@
 		<module>microservice-camunda-bpm</module>
 		<module>microservice-elasticsearch</module>
 		<module>microservice-cassandra</module>
+		<module>microservice-mongodb</module>
 	</modules>
 	<properties>
 		<spring.boot.version>1.5.2.RELEASE</spring.boot.version>

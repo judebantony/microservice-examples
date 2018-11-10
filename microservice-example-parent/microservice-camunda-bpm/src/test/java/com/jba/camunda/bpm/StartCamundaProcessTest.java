@@ -20,7 +20,7 @@ import org.junit.Test;
  *
  */
 @Deployment(resources = "bpmn/judeTest.bpmn")
-public class StartHeyProcessTest  extends AbstractProcessEngineRuleTest {
+public class StartCamundaProcessTest  extends AbstractProcessEngineRuleTest {
 
 	  @Test
 	  public void startAndFinishProcess() {

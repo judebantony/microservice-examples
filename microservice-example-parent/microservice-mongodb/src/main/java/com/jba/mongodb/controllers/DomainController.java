@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.jba.cassandra.controllers;
+package com.jba.mongodb.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.jba.cassandra.model.Product;
-import com.jba.cassandra.service.ProductService;
+import com.jba.mongodb.model.Domain;
+import com.jba.mongodb.service.DomainService;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 import io.swagger.annotations.Api;
@@ -29,27 +29,27 @@ import io.swagger.annotations.ApiResponses;
 
 @RestController
 @RequestMapping(value = "/api/v1")
-@Api(value = "products")
+@Api(value = "domains")
 @EnableDiscoveryClient
 @RefreshScope
-public class ProductController {
-	private static final String HEALTH = "Products Cassandra Repo Service is up and running!";
+public class DomainController {
+	private static final String HEALTH = "Domains MogoDB Repo Service is up and running!";
 	@Autowired
-	private ProductService productService;
+	private DomainService domainService;
 
-	@RequestMapping(value = "/products", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
+	@RequestMapping(value = "/domains", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)
-	@ApiOperation(value = "products", notes = "This api will retun the products info!")
+	@ApiOperation(value = "products", notes = "This api will retun the domain info!")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success", response = String.class),
 			@ApiResponse(code = 401, message = "Unauthorized"), @ApiResponse(code = 403, message = "Forbidden"),
 			@ApiResponse(code = 404, message = "Not Found"), @ApiResponse(code = 500, message = "Failure") })
-	@HystrixCommand(fallbackMethod = "defaultProductsService")
-	public Iterable<Product> products() {
-		return productService.findAll();
+	@HystrixCommand(fallbackMethod = "defaultDomainsService")
+	public Iterable<Domain> domains() {
+		return domainService.findAll();
 	}
 
-	public String defaultProductsService() {
-		return "Products Cassandra Repo Service has some issue now , please try after some time!";
+	public String defaultDomainsService() {
+		return "Domains Mongo Repo Service has some issue now , please try after some time!";
 	}
 
 	@RequestMapping(value = "/health", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)

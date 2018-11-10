@@ -44,12 +44,12 @@ public class UserController {
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success", response = String.class),
 			@ApiResponse(code = 401, message = "Unauthorized"), @ApiResponse(code = 403, message = "Forbidden"),
 			@ApiResponse(code = 404, message = "Not Found"), @ApiResponse(code = 500, message = "Failure") })
-	@HystrixCommand(fallbackMethod = "defaultUser")
+	@HystrixCommand(fallbackMethod = "defaultUserService")
 	public Iterable<User> user() {
 		return userService.getAllUsers();
 	}
 
-	public String defaultUser() {
+	public String defaultUserService() {
 		return "User Neo4j Repo Service has some issue now , please try after some time!";
 	}
 
