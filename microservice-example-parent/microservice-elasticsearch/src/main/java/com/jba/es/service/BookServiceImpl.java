@@ -1,5 +1,7 @@
-package com.jba.service;
-
+package com.jba.es.service;
+/**
+ * @author Jude
+ */
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,8 +9,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import com.jba.model.Book;
-import com.jba.repository.BookRepository;
+import com.jba.es.model.Book;
+import com.jba.es.repository.BookRepository;
 
 @Service
 public class BookServiceImpl implements BookService {

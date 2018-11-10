@@ -1,11 +1,13 @@
-package com.jba.service;
-
+package com.jba.es.service;
+/**
+ * @author Jude
+ */
 import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
-import com.jba.model.Book;
+import com.jba.es.model.Book;
 
 public interface BookService {
 

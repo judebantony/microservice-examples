@@ -1,5 +1,7 @@
-package com.jba.model;
-
+package com.jba.es.model;
+/**
+ * @author Jude
+ */
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 
