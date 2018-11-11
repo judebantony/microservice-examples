@@ -7,6 +7,7 @@ import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.jba.feign.api.ZipkinTest;
 
@@ -14,6 +15,7 @@ import com.jba.feign.api.ZipkinTest;
  * @author Jude
  * @since Sep 13, 2017
  */
+@RestController
 public class FeignClientController {
 	@Autowired
 	private ZipkinTest zipkinTest;

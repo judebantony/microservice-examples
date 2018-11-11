@@ -8,6 +8,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -37,7 +38,7 @@ public class BookController {
 	@Autowired
 	private BookService bookService;
 
-	@RequestMapping(value = "/books", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
+	@GetMapping(value = "/books", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	@ApiOperation(value = "books", notes = "This api will retun the books info!")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success", response = String.class),
@@ -52,7 +53,7 @@ public class BookController {
 		return "Book ElasticSearch Repo Service has some issue now , please try after some time!";
 	}
 
-	@RequestMapping(value = "/health", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
+	@GetMapping(value = "/health", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	public String health() {
 		return HEALTH;

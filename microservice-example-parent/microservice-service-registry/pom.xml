@@ -48,7 +48,14 @@
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>Camden.SR5</version>
+				<version>${spring-cloud-dependencies.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-netflix-dependencies</artifactId>
+				<version>${spring-cloud-netflix-dependencies.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -75,7 +82,7 @@
 			<plugin>
 				<groupId>com.spotify</groupId>
 				<artifactId>docker-maven-plugin</artifactId>
-				<version>0.4.11</version>
+				<version>${docker-maven-plugin.version}</version>
 				<configuration>
 					<imageName>${docker.image.prefix}/${project.artifactId}</imageName>
 					<dockerDirectory>src/main/docker</dockerDirectory>

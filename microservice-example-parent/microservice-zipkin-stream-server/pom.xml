@@ -14,6 +14,8 @@
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
+		<spring-cloud-sleuth-zipkin-stream.version>1.3.5.RELEASE</spring-cloud-sleuth-zipkin-stream.version>
+		<zipkin-server.version>2.11.8</zipkin-server.version>
 		<start-class>com.jba.zipkinstreamserver.starter.ZipkinStreamServerApplication</start-class>
 	</properties>
 	<dependencies>
@@ -43,24 +45,18 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-sleuth-zipkin-stream</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-jdbc</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-sleuth-zipkin-stream</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>io.zipkin.java</groupId>
 			<artifactId>zipkin-server</artifactId>
+			<version>${zipkin-server.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>io.zipkin.java</groupId>
 			<artifactId>zipkin-autoconfigure-ui</artifactId>
+			<version>${zipkin-server.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.integration</groupId>
@@ -91,7 +87,22 @@
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>Camden.SR5</version>
+				<version>${spring-cloud-dependencies.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<!-- Import dependency management from Spring Boot -->
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${spring.boot.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-netflix-dependencies</artifactId>
+				<version>${spring-cloud-netflix-dependencies.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -118,7 +129,7 @@
 			<plugin>
 				<groupId>com.spotify</groupId>
 				<artifactId>docker-maven-plugin</artifactId>
-				<version>0.4.11</version>
+				<version>${docker-maven-plugin.version}</version>
 				<configuration>
 					<imageName>${docker.image.prefix}/${project.artifactId}</imageName>
 					<dockerDirectory>src/main/docker</dockerDirectory>

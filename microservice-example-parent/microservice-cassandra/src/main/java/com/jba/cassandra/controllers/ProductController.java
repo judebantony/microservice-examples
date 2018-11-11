@@ -8,6 +8,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -37,7 +38,7 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 
-	@RequestMapping(value = "/products", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
+	@GetMapping(value = "/products", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	@ApiOperation(value = "products", notes = "This api will retun the products info!")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success", response = String.class),
@@ -52,7 +53,7 @@ public class ProductController {
 		return "Products Cassandra Repo Service has some issue now , please try after some time!";
 	}
 
-	@RequestMapping(value = "/health", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
+	@GetMapping(value = "/health", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	public String health() {
 		return HEALTH;

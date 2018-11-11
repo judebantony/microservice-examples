@@ -8,7 +8,9 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -38,7 +40,7 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
-	@RequestMapping(value = "/users", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
+	@GetMapping(value = "/users", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	@ApiOperation(value = "users", notes = "This api will retun the user info!")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success", response = String.class),
@@ -59,13 +61,13 @@ public class UserController {
 	 * @param userName
 	 * @return
 	 */
-	@RequestMapping(value = "/load/", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
+	@PostMapping(value = "/load/", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	public User loadUser(@PathVariable String userName) {
 		return userService.createUser(userName);
 	}
 
-	@RequestMapping(value = "/health", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
+	@GetMapping(value = "/health", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	public String health() {
 		return HEALTH;

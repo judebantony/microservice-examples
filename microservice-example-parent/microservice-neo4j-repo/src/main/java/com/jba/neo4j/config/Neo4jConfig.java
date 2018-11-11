@@ -3,6 +3,8 @@
  */
 package com.jba.neo4j.config;
 
+import java.io.File;
+
 import org.neo4j.graphdb.GraphDatabaseService;
 import org.neo4j.graphdb.factory.GraphDatabaseFactory;
 import org.springframework.beans.BeansException;
@@ -29,7 +31,7 @@ public class Neo4jConfig implements BeanFactoryAware {
 
 	@Bean(destroyMethod = "shutdown")
 	public GraphDatabaseService graphDatabaseService() {
-		return new GraphDatabaseFactory().newEmbeddedDatabase(dataBasePath);
+		return new GraphDatabaseFactory().newEmbeddedDatabase(new File(dataBasePath));
 	}
 
 	@Override

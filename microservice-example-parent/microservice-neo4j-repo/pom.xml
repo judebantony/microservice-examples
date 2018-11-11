@@ -15,20 +15,12 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<failOnMissingWebXml>false</failOnMissingWebXml>
-		<neo4j.version>2.2.5</neo4j.version>
-		<neo4j-ogm.version>2.1.2</neo4j-ogm.version>
 		<start-class>com.jba.neo4j.starter.Neo4JStarter</start-class>
 	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-neo4j</artifactId>
-			<exclusions>
-				<exclusion>
-					<groupId>org.neo4j</groupId>
-					<artifactId>neo4j-ogm-http-driver</artifactId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.data</groupId>
@@ -37,7 +29,6 @@
 		<dependency>
 			<groupId>org.neo4j</groupId>
 			<artifactId>neo4j-ogm-bolt-driver</artifactId>
-			<version>${neo4j-ogm.version}</version>
 		</dependency>
 
 		<dependency>
@@ -140,7 +131,14 @@
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>Camden.SR5</version>
+				<version>${spring-cloud-dependencies.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-netflix-dependencies</artifactId>
+				<version>${spring-cloud-netflix-dependencies.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -168,7 +166,7 @@
 			<plugin>
 				<groupId>com.spotify</groupId>
 				<artifactId>docker-maven-plugin</artifactId>
-				<version>0.4.11</version>
+				<version>${docker-maven-plugin.version}</version>
 				<configuration>
 					<imageName>${docker.image.prefix}/${project.artifactId}</imageName>
 					<dockerDirectory>src/main/docker</dockerDirectory>

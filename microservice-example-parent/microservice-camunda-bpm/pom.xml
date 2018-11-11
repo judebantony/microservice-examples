@@ -12,11 +12,6 @@
 	<name>Camunda  BPM Example</name>
 	<description>Camunda  BPM Example</description>
 	<properties>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
-		<spring.boot.version>1.5.8.RELEASE</spring.boot.version>
-		<camunda.spring.boot.starter.version>2.3.0</camunda.spring.boot.starter.version>
-		<camunda.version>7.8.0</camunda.version>
 		<failOnMissingWebXml>false</failOnMissingWebXml>
 		<start-class>com.jba.camunda.bpm.starter.CamundaBPMStarter</start-class>
 	</properties>
@@ -35,7 +30,6 @@
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
-			<version>3.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -132,7 +126,7 @@
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>Camden.SR5</version>
+				<version>${spring-cloud-dependencies.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -141,6 +135,13 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-dependencies</artifactId>
 				<version>${spring.boot.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-netflix-dependencies</artifactId>
+				<version>${spring-cloud-netflix-dependencies.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -169,7 +170,7 @@
 			<plugin>
 				<groupId>com.spotify</groupId>
 				<artifactId>docker-maven-plugin</artifactId>
-				<version>0.4.11</version>
+				<version>${docker-maven-plugin.version}</version>
 				<configuration>
 					<imageName>${docker.image.prefix}/${project.artifactId}</imageName>
 					<dockerDirectory>src/main/docker</dockerDirectory>

@@ -6,10 +6,8 @@ package com.jba.authserver.config;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.actuate.autoconfigure.ManagementServerProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.annotation.Order;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
@@ -30,7 +28,6 @@ import com.jba.authserver.provider.CustomUserDetailsService;
  *
  */
 @Configuration
-@Order(ManagementServerProperties.ACCESS_OVERRIDE_ORDER)
 @EnableAuthorizationServer
 public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
 	private static final Logger LOGGER = LoggerFactory.getLogger(OAuth2Config.class);

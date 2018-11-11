@@ -25,10 +25,6 @@ public class BookServiceImpl implements BookService {
         bookRepository.delete(book);
     }
 
-    public Book findOne(String id) {
-        return bookRepository.findOne(id);
-    }
-
     public Iterable<Book> findAll() {
         return bookRepository.findAll();
     }

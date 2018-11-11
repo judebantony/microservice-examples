@@ -24,10 +24,6 @@ public class ProductServiceImpl implements ProductService {
         productRepository.delete(book);
     }
 
-    public Product findOne(String id) {
-        return productRepository.findOne(id);
-    }
-
     public Iterable<Product> findAll() {
         return productRepository.findAll();
     }

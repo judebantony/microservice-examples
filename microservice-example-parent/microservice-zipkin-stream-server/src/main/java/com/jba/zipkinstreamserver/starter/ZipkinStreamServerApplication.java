@@ -9,7 +9,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
-import org.springframework.cloud.sleuth.zipkin.stream.EnableZipkinStreamServer;
+//import org.springframework.cloud.sleuth.zipkin.stream.EnableZipkinStreamServer;
 
 /**
  * @author Jude
@@ -19,7 +19,7 @@ import org.springframework.cloud.sleuth.zipkin.stream.EnableZipkinStreamServer;
 @EnableDiscoveryClient
 @EnableHystrixDashboard
 @SpringBootApplication
-@EnableZipkinStreamServer
+//@EnableZipkinStreamServer
 public class ZipkinStreamServerApplication {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ZipkinStreamServerApplication.class);
 
