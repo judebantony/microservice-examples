@@ -1,9 +1,9 @@
 # microservice-examples
 Different Micro Service implementation examples using Spring Boot/Cloud Framework
 
-1) Config Server with Cloud bus
+1) Config Server with Cloud bus,
     To Check it is up:- http://localhost:7070/config/default
-2) Service Registery Patten
+2) Service Registery Patten,
     To Check it is up:- http://localhost:9090/
 3) Api Gatway Patten using Zuul
 4) Circuit Breker Patten usking Feign and Ribbon
