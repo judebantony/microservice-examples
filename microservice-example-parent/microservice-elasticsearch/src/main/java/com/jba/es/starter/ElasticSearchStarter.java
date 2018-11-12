@@ -1,5 +1,7 @@
 package com.jba.es.starter;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
@@ -16,9 +18,10 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @ComponentScan("com.jba")
 @EnableHystrix
 public class ElasticSearchStarter {
-
+	private static final Logger LOGGER = LoggerFactory.getLogger(ElasticSearchStarter.class);
 
 	public static void main(String args[]) {
+		LOGGER.info("ElasticSearch Server is Starting");
 		SpringApplication.run(ElasticSearchStarter.class, args);
 	}
 
