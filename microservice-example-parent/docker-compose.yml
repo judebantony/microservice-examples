@@ -1,0 +1,96 @@
+version: '2.2'
+services:
+    config-server:
+        container_name: config-server
+        build:
+            context: .
+            dockerfile: Dockerfile-configserver
+        image: config-server:latest
+        expose:
+            - 7070
+        ports:
+            - 7070:7070
+        networks:
+            - jba-network
+        volumes:
+            - config-repo:/var/lib/config-repo
+    discovery-server:
+        container_name: discovery-server
+        build:
+            context: .
+            dockerfile: Dockerfile-eurekaserver
+        image: discovery-server:latest
+        expose:
+            - 9090
+        ports:
+            - 9090:9090
+        networks:
+            - emp-network
+        links:
+            - config-server:config-server
+    api-gateway:
+        container_name: api-gateway
+        build:
+            context: .
+            dockerfile: Dockerfile-apigateway
+        image: api-gateway:latest
+        expose:
+            - 8888
+        ports:
+            - 8888:8888
+        networks:
+            - emp-network
+        links:
+            - config-server:config-server
+            - discovery-server:discovery-server
+        depends_on:
+            - config-server
+            - discovery-server
+        logging:
+            driver: json-file
+    auth-server:
+        container_name: auth-server
+        build:
+            context: .
+            dockerfile: Dockerfile-authserver
+        image: auth-server:latest
+        expose:
+            - 8443
+        ports:
+            - 8443:8443
+        networks:
+            - emp-network
+        links:
+            - config-server:config-server
+            - discovery-server:discovery-server
+        depends_on:
+            - config-server
+            - discovery-server
+        logging:
+            driver: json-file
+    feign-client:
+        container_name: feign-client
+        build:
+            context: .
+            dockerfile: Dockerfile-feignclient
+        image: feign-client:latest
+        expose:
+            - 3383
+        ports:
+            - 3383:3383
+        networks:
+            - emp-network
+        links:
+            - config-server:config-server
+            - discovery-server:discovery-server
+        depends_on:
+            - config-server
+            - discovery-server
+        logging:
+            driver: json-file
+networks:
+    jba-network:
+        driver: bridge
+volumes:
+    config-repo:
+        external: true
